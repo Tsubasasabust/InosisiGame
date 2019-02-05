@@ -6,6 +6,9 @@ TagManager:
   tags:
   - Shootable
   - Ground
+  - red_apple
+  - poison_apple
+  - Enemy
   layers:
   - Default
   - TransparentFX

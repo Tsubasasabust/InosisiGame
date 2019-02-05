@@ -40,13 +40,12 @@ public class TouchController : MonoBehaviour
         circle2 = GameObject.Find("Image2").GetComponent<RectTransform>();
     }
 
-
     // Update is called once per frame
     void Update()
     {
         TouchMove();
-        
     }
+
     void TouchMove()
     {
         if (Input.GetMouseButtonDown(0))
@@ -73,13 +72,18 @@ public class TouchController : MonoBehaviour
             Speed = Mathf.Sqrt(Mathf.Pow(dx, 2) + Mathf.Pow(dy, 2));
             //Debug.Log(Speed);
             ControllRad = rad * Mathf.Rad2Deg;
-            if(ControllRad <= 90)
+     
+
+            expart(ControllRad);
+            circle.transform.eulerAngles = new Vector3(0,0,ControllRad);
+            //transform.eulerAngles = new Vector3(0, -ControllRad, 0);
+           /* if(ControllRad <= 90)
             {
-                transform.eulerAngles += new Vector3(0, 1, 0);//contorollradが＋なら右みたいな処理を畏怖分で書いたほうがよろし
+                transform.eulerAngles += new Vector3(0, 2, 0);
             }else if (ControllRad >= 91)
             {
-                transform.eulerAngles -= new Vector3(0, 1, 0);//contorollradが＋なら右みたいな処理を畏怖分で書いたほうがよろし
-            }
+                transform.eulerAngles -= new Vector3(0, 2, 0);
+            }*/
 
             //transform.eulerAngles = new Vector3(0, -ControllRad / move_speed, 0);//contorollradが＋なら右みたいな処理を畏怖分で書いたほうがよろし
             Vector3 velocity = this.gameObject.transform.rotation * new Vector3(0, 0, move_speed);
@@ -103,9 +107,27 @@ public class TouchController : MonoBehaviour
         }
 
     }
+
+    void expart(float ControllRad)
+    {
+        transform.eulerAngles = new Vector3(0, -ControllRad, 0);
+    }
+
+    void easy(float ControllRad)
+    {
+        if (ControllRad <= 90)
+        {
+            transform.eulerAngles += new Vector3(0, 2, 0);
+        }
+        else if (ControllRad >= 91)
+        {
+            transform.eulerAngles -= new Vector3(0, 2, 0);
+        }
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.tag != "Ground")
+        if (collision.gameObject.tag == "Enemy")
         {
             foreach (ContactPoint point in collision.contacts)
             {
@@ -117,6 +139,16 @@ public class TouchController : MonoBehaviour
                     Destroy(collision.gameObject);
                 }
             }
+        }else if(collision.gameObject.tag == "red_apple")
+        {
+            this.transform.localScale = new Vector3(4f, 4f, 4f);
+            Destroy(collision.gameObject);
+
+        }
+        else if(collision.gameObject.tag == "poison_apple")
+        {
+            this.transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+            Destroy(collision.gameObject);
         }
     }
 }

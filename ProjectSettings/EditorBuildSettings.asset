@@ -4,4 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Inosisi_main.unity
+    guid: d097cd324c6739b4b8971ce650bc694e
+  - enabled: 1
+    path: Assets/Scenes/Inosisi_Over.unity
+    guid: 8e36ab6a437d59647937c4c0b09e3952
+  - enabled: 1
+    path: Assets/Scenes/Inosisi_crear.unity
+    guid: 8281fa35c4dd56d4ba3804bfb321cd8c
+  m_configObjects: {}

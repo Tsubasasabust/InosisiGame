@@ -19,14 +19,12 @@ public class Move : MonoBehaviour
     {
         now_position_x = this.gameObject.transform.position.x;
         now_position_z = this.gameObject.transform.position.z;
-        //dx = now_position_x - 0f;
-        //dz = now_position_z - 0f;
 
         dx = 0f - now_position_x;
         dz = 0f - now_position_z;
         rad = Mathf.Atan2(dz, dx);
         ControllRad = rad * Mathf.Rad2Deg;
-        this.transform.eulerAngles = new Vector3(0, ControllRad, 0);
+        //this.transform.eulerAngles = new Vector3(0, ControllRad, 0);
         //Vector3 velocity = this.gameObject.transform.rotation * new Vector3(0, 0, move_speed);
 
     }
@@ -37,5 +35,10 @@ public class Move : MonoBehaviour
         //this.transform.Tanslate += new Vector3(1f, 0f, 0f);
         Vector3 velocity = this.gameObject.transform.rotation * new Vector3(0, 0, move_speed);
         this.gameObject.transform.position -= velocity * Time.deltaTime;
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        Destroy(gameObject);
+        Debug.Log("Yes");
     }
 }

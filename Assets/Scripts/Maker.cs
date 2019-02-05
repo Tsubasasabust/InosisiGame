@@ -7,12 +7,13 @@ public class Maker : MonoBehaviour
     //private int[,] x_point;
     //private int[,] z_point;
     private float[] x_point;
-    private float y_point = 5f;
+    private float y_point = 2f;
     private float[] z_point;
     public GameObject Yaku;
     private int rand;
     private int min = 0;
-    private int max = 9;
+    private int max = 8;
+    private float[] enemy_rotate;
 
     // Start is called before the first frame update
     void Start()
@@ -27,8 +28,10 @@ public class Maker : MonoBehaviour
             {3, 4, 5},
             {6, 7, 8}
         };*/
-        x_point = new float[] { -80f, 0f, 80, -80f, 0f, 80f, -80f, 0f, 80f };
-        z_point = new float[] { 80f, 80f, 80f, 0f, 0f, 0f, -80f, -80f, -80f };
+        x_point = new float[] { -80f, 0f, 80, -80f, 80f, -80f, 0f, 80f };//原点はない
+        z_point = new float[] { 80f, 80f, 80f, 0f, 0f, -80f, -80f, -80f };
+        enemy_rotate = new float[] { 45f, 0f, -45f, 90f, -90f, 135f, 180f, -135f };
+
         InvokeRepeating("Make", 1f,5f);
     }
 
@@ -36,7 +39,7 @@ public class Maker : MonoBehaviour
     void Make()
     {
         rand = Random.Range(min,max);
-        Instantiate(Yaku, new Vector3(x_point[rand],y_point,z_point[rand]), transform.rotation);
-        Debug.Log("Hello");
+        Instantiate(Yaku, new Vector3(x_point[rand],y_point,z_point[rand]), Quaternion.Euler(0, -enemy_rotate[rand], 0));
+        //Debug.Log("Hello");
     }
 }
