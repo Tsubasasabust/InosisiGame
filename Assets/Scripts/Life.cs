@@ -28,6 +28,7 @@ public class Life : MonoBehaviour
             Life_image[Life_Count].SetActive(false);
             if (Life_Count == 0)
             {
+                Sound.StopBgm();
                 SceneManager.LoadScene("Inosisi_Over");
             }
             

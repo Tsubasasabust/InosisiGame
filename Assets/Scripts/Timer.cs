@@ -13,7 +13,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        Sound.LoadBgm("Crear", "Crear");
     }
 
     // Update is called once per frame
@@ -24,6 +24,7 @@ public class Timer : MonoBehaviour
         timerText.text = seconds.ToString();
         if(seconds == 0)
         {
+            Sound.PlayBgm("Crear");
             SceneManager.LoadScene("Inosisi_crear");
         }
     }

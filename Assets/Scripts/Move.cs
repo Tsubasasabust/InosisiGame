@@ -17,6 +17,8 @@ public class Move : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Sound.LoadSe("Samon", "Samon");
+        Sound.PlaySe("Samon");
         now_position_x = this.gameObject.transform.position.x;
         now_position_z = this.gameObject.transform.position.z;
 

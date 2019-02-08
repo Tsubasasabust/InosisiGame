@@ -14,4 +14,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Inosisi_crear.unity
     guid: 8281fa35c4dd56d4ba3804bfb321cd8c
+  - enabled: 1
+    path: Assets/Scenes/CountDown.unity
+    guid: 76d0cac52da8f774ab6962b367684980
+  - enabled: 1
+    path: Assets/Scenes/Title.unity
+    guid: fb2539f7ada2a7e4980d08de519983da
   m_configObjects: {}
