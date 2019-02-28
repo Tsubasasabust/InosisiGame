@@ -8,24 +8,21 @@ public class Timer : MonoBehaviour
 {
     public Text timerText;
 
-    public float totalTime;
-    int seconds;
-    // Start is called before the first frame update
-    void Start()
-    {
-        Sound.LoadBgm("Crear", "Crear");
-    }
-
-    // Update is called once per frame
+    private float totalTime = 60;
+    private int seconds;
     void Update()
     {
-        totalTime -= Time.deltaTime;
-        seconds = (int)totalTime;
-        timerText.text = seconds.ToString();
-        if(seconds == 0)
+        totalTime -= Time.deltaTime;//時間を減らしていく
+        seconds = (int)totalTime;//int型に変換
+        timerText.text = seconds.ToString();//text用にstringに変換
+        if(seconds == 0)//Enemy_levelによってクリアか判定する
         {
-            Sound.PlayBgm("Crear");
-            SceneManager.LoadScene("Inosisi_crear");
+            int Enemy_level = Maker.getLevel();
+            if(Enemy_level == 2){
+            SceneManager.LoadScene("Inosisi_Crear");//クリア画面に遷移
+            }else{
+            SceneManager.LoadScene("Inosisi_NextLevel");//クリア画面に遷移
+            }
         }
     }
 }

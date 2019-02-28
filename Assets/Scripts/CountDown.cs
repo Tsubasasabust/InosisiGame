@@ -17,19 +17,19 @@ public class CountDown : MonoBehaviour
 
     void Start()
     {
-        Sound.LoadSe("Count", "Count");
-        Sound.LoadSe("Game_Start", "Game_Start");
+        Sound.LoadSe("Count", "Count");//カウント音のセット
+        Sound.LoadSe("Game_Start", "Game_Start");//ゲームのスタート音のセット
 
         One.SetActive(false);
         Two.SetActive(false);
         Three.SetActive(false);
         Go.SetActive(false);
 
-        StartCoroutine(CountdownCoroutine());
+        StartCoroutine(CountdownCoroutine());//コルーチンの再生
     }
 
 
-    IEnumerator CountdownCoroutine()
+    IEnumerator CountdownCoroutine()//一つずつActiveにして表示していく
     {
 
         Sound.PlaySe("Count");
@@ -51,7 +51,7 @@ public class CountDown : MonoBehaviour
         Go.SetActive(true);
         yield return new WaitForSeconds(1.0f);
 
-        SceneManager.LoadScene("Inosisi_main");
+        SceneManager.LoadScene("Inosisi_main");//すべて表示した後メインシーンに移行
 
     }
 }

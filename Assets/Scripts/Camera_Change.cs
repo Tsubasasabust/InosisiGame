@@ -11,43 +11,25 @@ public class Camera_Change : MonoBehaviour
 
     void Start()
     {
-        MainCam = GameObject.Find("MainCamera");
-        SubCam = GameObject.Find("SubCamera");
+        SubCam = GameObject.Find("MainCamera");//上からの視点
+        MainCam = GameObject.Find("SubCamera");//下からの視点
 
         SubCam.SetActive(false);
         Camera_State = "MainCam";
     }
 
-    public void Camera()
+    public void Camera()//カメラの状態によって切り替える 画面上のボタンで切り替える
     {
         if(Camera_State == "MainCam")
         {
             MainCam.SetActive(false);
             SubCam.SetActive(true);
             Camera_State = "SabCam";
-        }
-        else
+        }else
         {
             MainCam.SetActive(true);
             SubCam.SetActive(false);
             Camera_State = "MainCam";
         }
     }
-
-    /*void Update()
-    {
-        if (Input.GetKeyDown("space"))
-        {
-            if (MainCam.activeSelf)
-            {
-                MainCam.SetActive(false);
-                SubCam.SetActive(true);
-            }
-            else
-            {
-                MainCam.SetActive(true);
-                SubCam.SetActive(false);
-            }
-        }
-    }*/
 }
